@@ -1,0 +1,43 @@
+
+
+
+  <div class="container col-md-6">
+    <div class="abs-center">
+      <form novalidate (ngSubmit)="onSubmit()" [formGroup]="user">
+
+        <div class="form-group">
+            <label for="email">Email</label> 
+            <input  name="email" id="email"  formControlName="email" class="form-control">
+          </div>
+          
+          <div class="container-error-message"  style="size: 10px;"*ngIf="user.get('email').hasError('required')  && user.get('email').touched  ">
+            <span style="color: red;">Email requerido</span> 
+            </div> 
+
+        <div class="form-group">
+          <label for="name">Usuario</label>
+          <input name="name" id="name"  formControlName="name" class="form-control">
+        </div>
+
+        <div class="container-error-message"  style="size: 10px;"*ngIf="user.get('name').hasError('required') && user.get('name').touched">
+        <span style="color: red;">Usuario requerido</span> 
+        </div>
+     
+        <div class="form-group">
+          <label for="password">Clave</label> 
+          <input  name="password" id="password" type="password" formControlName="password" class="form-control">
+        </div>
+     
+        <div class="container-error-message"  style="size: 10px;"*ngIf="user.get('password').hasError('required') && user.get('password').touched">
+            <span style="color: red;">Clave requerida</span> 
+            </div>
+
+            <div class="container-error-message"  style="size: 10px;"*ngIf="user.get('password').hasError('minlength') && user.get('password').touched">
+                <span style="color: red;">Minimo 10caracteres</span> 
+                </div>
+               
+        <button type="submit"  class = "btn-send"[disabled]="user.invalid">Ingresar</button>
+      </form>
+    </div>
+  </div>
+  
